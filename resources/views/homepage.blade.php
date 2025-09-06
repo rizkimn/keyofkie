@@ -10,7 +10,7 @@
 </head>
 <body>
     <section class="w-full h-screen">
-        <div id="map" class="w-full h-full"></div>
+        <div id="map" class="w-full h-full *:saturate-200 *:brightness-100 *:invert *:grayscale-100"></div>
     </section>
 </body>
 </html>
