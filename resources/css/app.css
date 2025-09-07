@@ -34,3 +34,60 @@
     display: none !important;
 }
 /* Leaflet Popup End Style */
+
+/* Leaflet Routing Machine Style */
+/* Routing container */
+.leaflet-routing-container {
+    background: #ffffff;
+    border-radius: 16px !important;
+    box-shadow: none !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #333;
+    padding: 10px;
+    border: none !important;
+}
+
+/* Judul / heading routing */
+.leaflet-routing-alt h2 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #111;
+}
+
+/* Daftar rute */
+.leaflet-routing-alt {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 8px;
+    margin-top: 6px;
+}
+
+/* Tombol-tombol */
+.leaflet-routing-container .leaflet-routing-collapse-btn,
+.leaflet-routing-container .leaflet-routing-close-btn {
+    background: #E21C51 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.leaflet-routing-container .leaflet-routing-collapse-btn:hover,
+.leaflet-routing-container .leaflet-routing-close-btn:hover {
+    background: #c11642 !important;
+}
+
+/* Scrollbar biar modern */
+.leaflet-routing-container ::-webkit-scrollbar {
+    width: 6px;
+}
+.leaflet-routing-container ::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 3px;
+}
+/* Leaflet Routing Machine End Style */
