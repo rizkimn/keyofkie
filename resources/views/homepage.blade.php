@@ -10,7 +10,12 @@
 </head>
 <body>
     <section class="w-full h-screen">
-        <div id="map" class="w-full h-full *:saturate-200 *:brightness-100 *:invert *:grayscale-100"></div>
+        <div id="map" class="w-full h-full"></div>
     </section>
+
+<script>
+    // Contoh: ambil semua locations dari controller
+    window.locationsData = @json($locations);
+</script>
 </body>
 </html>

@@ -4,13 +4,24 @@ import { leafletProviders } from './leaflet-providers';
 
 const map = L.map('map', {
     zoomControl: false,
-    maxZoom: 16
-}).setView([0.6973449319031846, 127.95485842430058], 9);
+    maxZoom: 20
+}).setView([0.6973449319031846, 127.95485842430058], 8);
 
 // L.control.zoom({
 //     position: 'bottomleft'
 // }).addTo(map);
 
-L.tileLayer(leafletProviders['Esri']['WorldGrayCanvas']['url'], {
-    attribution: leafletProviders['Esri']['WorldGrayCanvas']['html_attribution'],
+L.tileLayer(leafletProviders['Stadia']['StamenTerrain']['url'], {
+    attribution: leafletProviders['Stadia']['StamenTerrain']['html_attribution'],
 }).addTo(map);
+
+const locations = window.locationsData
+
+locations.forEach(loc => {
+    const lat = loc.latitude;  // langsung pakai kolom latitude
+    const lng = loc.longitude; // langsung pakai kolom longitude
+
+    L.marker([lat, lng])
+        .addTo(map)
+        .bindPopup(`<b>${loc.name}</b>`);
+});
