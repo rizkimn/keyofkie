@@ -9,3 +9,24 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* Leaflet Popup Style */
+.leaflet-popup-content-wrapper {
+  border-radius: 12px !important;
+  padding: 10px !important;
+  background: white;
+  box-shadow: none !important;
+}
+
+.leaflet-popup-content {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937; /* abu-abu gelap */
+  margin: 0;
+}
+
+.leaflet-popup-tip {
+  background: white;
+}
+/* Leaflet Popup End Style */
