@@ -4,7 +4,7 @@ import { leafletProviders } from './leaflet-providers';
 
 const map = L.map('map', {
     zoomControl: false,
-    maxZoom: 20
+    maxZoom: 18
 }).setView([0.6973449319031846, 127.95485842430058], 8);
 
 // L.control.zoom({
