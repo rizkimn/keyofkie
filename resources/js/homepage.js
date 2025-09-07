@@ -16,7 +16,7 @@ L.tileLayer(leafletProviders['Stadia']['StamenTerrain']['url'], {
 
 const locations = window.locationsData;
 
-// variabel global untuk user location & rute
+// variabel global
 let userLatLng = null;
 let routingControl = null;
 
@@ -50,33 +50,43 @@ locations.forEach(loc => {
     const lat = loc.latitude;
     const lng = loc.longitude;
 
-    L.marker([lat, lng])
+    const marker = L.marker([lat, lng])
         .addTo(map)
-        .bindPopup(`<b>${loc.name}</b>`)
-        .on("click", () => {
-            if (!userLatLng) {
-                alert("Lokasi Anda belum terdeteksi 🚫");
-                return;
-            }
+        .bindPopup(`<b>${loc.name}</b>`);
 
-            // hapus rute lama kalau ada
-            if (routingControl) {
-                map.removeControl(routingControl);
-            }
+    // saat popup dibuka → buat rute
+    marker.on("popupopen", () => {
+        if (!userLatLng) {
+            alert("Lokasi Anda belum terdeteksi 🚫");
+            return;
+        }
 
-            // buat rute baru user -> lokasi ini
-            routingControl = L.Routing.control({
-                waypoints: [
-                    L.latLng(userLatLng.lat, userLatLng.lng),
-                    L.latLng(lat, lng)
-                ],
-                lineOptions: {
-                    styles: [{ color: '#E21C51', weight: 4 }]
-                },
-                addWaypoints: false,
-                draggableWaypoints: false,
-                fitSelectedRoutes: true,
-                showAlternatives: false
-            }).addTo(map);
-        });
+        // pastikan rute lama hilang dulu
+        if (routingControl) {
+            map.removeControl(routingControl);
+            routingControl = null;
+        }
+
+        routingControl = L.Routing.control({
+            waypoints: [
+                L.latLng(userLatLng.lat, userLatLng.lng),
+                L.latLng(lat, lng)
+            ],
+            lineOptions: {
+                styles: [{ color: '#E21C51', weight: 4 }]
+            },
+            addWaypoints: false,
+            draggableWaypoints: false,
+            fitSelectedRoutes: true,
+            showAlternatives: false
+        }).addTo(map);
+    });
+
+    // saat popup ditutup → hapus rute
+    marker.on("popupclose", () => {
+        if (routingControl) {
+            map.removeControl(routingControl);
+            routingControl = null;
+        }
+    });
 });
