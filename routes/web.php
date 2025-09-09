@@ -57,3 +57,7 @@ Route::get('/', function () {
         'sentimentSummary'
     ));
 });
+
+Route::get("/dashboard", function () {
+    return view('layout.dashboard');
+});
