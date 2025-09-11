@@ -1,0 +1,3 @@
+<span class="bg-transparent w-8 h-8 flex items-center justify-center rounded-lg overflow-hidden">
+    ...
+</span>
