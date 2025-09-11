@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocationController;
 use App\Models\Location;
 use App\Models\SocialPost;
 use Carbon\Carbon;
@@ -59,5 +60,10 @@ Route::get('/', function () {
 });
 
 Route::get("/dashboard", function () {
-    return view('layout.dashboard');
+    return view('dashboard.index');
+});
+
+Route::prefix('dashboard')->name('dashboard.')->group(function () {
+    Route::resource('locations', LocationController::class)
+        ->only(['index', 'show', 'create', 'store']);
 });

@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('heads')
 
-    <title>Dashboard</title>
+    <title>@yield('title') | Key Of Kie</title>
 </head>
 <body>
     {{-- starter --}}
-    {{-- <div class="hidden bg-sky-50 bg-sky-500 bg-amber-50 bg-amber-500 bg-blue-50 hover:bg-blue-500/5 hover:bg-red-500/5 hover:bg-rose-500/5 hover:bg-neutral-500/5 stroke-blue-50 stroke-emerald-50 stroke-red-50 stroke-orange-50 stroke-sky-50 stroke-white stroke-black stroke-neutral-50 stroke-neutral-500 stroke-neutral-400 stroke-neutral-300 stroke-red-500 stroke-blue-500 *:stroke-blue-500 stroke-sky-500 stroke-slate-500 stroke-slate-800 stroke-orange-500 stroke-rose-50 stroke-rose-500 stroke-emerald-500 stroke-indigo-50 stroke-indigo-500 stroke-amber-50 stroke-amber-500 stroke-slate-400 fill-slate-400 fill-amber-50 fill-amber-500 fill-blue-50 fill-emerald-50 fill-red-50 fill-orange-50 fill-sky-50 fill-white fill-black fill-neutral-50 fill-neutral-500 fill-neutral-400 fill-red-500 fill-blue-500 fill-sky-500 fill-slate-500 bg-slate-400 peer-checked:bg-amber-500 peer-checked:bg-sky-500 fill-slate-800 fill-orange-500 fill-indigo-50 fill-indigo-500 fill-emerald-500 fill-rose-50 fill-rose-500"></div> --}}
+    {{-- <div class="hidden bg-sky-50 bg-sky-500 bg-blue-200 text-blue-600 bg-amber-200 text-amber-600 bg-sky-200 text-sky-600 bg-emerald-200 text-emerald-600 bg-amber-50 bg-amber-500 bg-blue-50 hover:bg-blue-500/5 hover:bg-red-500/5 hover:bg-rose-500/5 hover:bg-neutral-500/5 stroke-blue-50 stroke-emerald-50 stroke-red-50 stroke-orange-50 stroke-sky-50 stroke-white stroke-black stroke-neutral-50 stroke-neutral-500 stroke-neutral-400 stroke-neutral-300 stroke-red-500 stroke-blue-500 *:stroke-blue-500 stroke-sky-500 stroke-slate-500 stroke-slate-800 stroke-orange-500 stroke-rose-50 stroke-rose-500 stroke-emerald-500 stroke-indigo-50 stroke-indigo-500 stroke-amber-50 stroke-amber-500 stroke-slate-400 fill-slate-400 fill-amber-50 fill-amber-500 fill-blue-50 fill-emerald-50 fill-red-50 fill-orange-50 fill-sky-50 fill-white fill-black fill-neutral-50 fill-neutral-500 fill-neutral-400 fill-red-500 fill-blue-500 fill-sky-500 fill-slate-500 bg-slate-400 peer-checked:bg-amber-500 peer-checked:bg-sky-500 fill-slate-800 fill-orange-500 fill-indigo-50 fill-indigo-500 fill-emerald-500 fill-rose-50 fill-rose-500"></div> --}}
     <section class="bg-slate-200 p-2 w-screen h-screen relative">
         <aside class="flex flex-col gap-2 w-64 h-full peer">
             <nav class="w-full flex flex-col py-3 gap-3">
@@ -42,8 +42,8 @@
                         href="/dashboard"
                         :isActive="request()->is('dashboard')" />
                     <x-dashboard.menu-navigator icon="map" label="Manajemen Tempat Wisata"
-                        href="#"
-                        :isActive="false" />
+                        href="{{route('dashboard.locations.index')}}"
+                        :isActive="request()->is('dashboard/locations') || request()->is('dashboard/locations/*')" />
                     <x-dashboard.menu-navigator-group icon="chartline-up" label="Analisis & Statistik"
                     :isActive="false" >
                         <x-dashboard.menu-navigator-item href="#" label="Trend Tempat Wisata"
@@ -55,13 +55,13 @@
                 <menu class="flex flex-col gap-2 py-4">
                     <x-dashboard.menu-navigator icon="user" label="Manajemen Pengguna"
                         href="#"
-                        :isActive="request()->is('dashboard/users')" />
+                        :isActive="request()->is('dashboard/users') || request()->is('dashboard/users/*')" />
                 </menu>
             </nav>
         </aside>
 
-        <main class="bg-slate-50 rounded-2xl absolute top-2 bottom-2 right-2 left-14 peer-hover:left-68 transition-all duration-300">
-            {{--  --}}
+        <main class="bg-slate-100 rounded-3xl absolute top-2 bottom-2 right-2 left-14 peer-hover:left-68 transition-all duration-300 p-6">
+            @yield('main')
         </main>
     </section>
 
@@ -79,5 +79,7 @@
         }
     });
 </script>
+
+@stack('scripts')
 </body>
 </html>
