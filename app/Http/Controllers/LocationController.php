@@ -12,4 +12,9 @@ class LocationController extends Controller
         $locations = Location::latest()->paginate(16);
         return view('dashboard.locations.index', compact('locations'));
     }
+
+    public function create()
+    {
+        return view('dashboard.locations.create');
+    }
 }
