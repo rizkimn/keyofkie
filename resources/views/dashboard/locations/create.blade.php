@@ -13,7 +13,7 @@
 @section('main')
     <x-dashboard.menu-navigator icon="map" label="Tambah Tempat Wisata" href="#" :isActive="true" />
 
-    <h2 class="text-2xl py-4">Input Data RTLH</h2>
+    <h2 class="text-2xl py-4">Input Tempat Wisata</h2>
 
     @if ($errors->any())
     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mb-6">
