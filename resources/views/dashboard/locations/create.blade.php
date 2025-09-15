@@ -51,30 +51,6 @@
                         :multiple="true"
                         accepts="image/*" />
                 </div>
-            </div>
-            <div class="flex flex-col gap-4 text-sm lg:w-2xl">
-                <div class="flex flex-col gap-2">
-                    <label for="latitude">Koordinat</label>
-                    <span class="grid grid-cols-2 max-md:grid-cols-1 items-center gap-2">
-                        <x-forms.input id="latitude" name="latitude"
-                            class="border {{ $errors->has('latitude') ? 'bg-red-50 border-red-500' : 'bg-neutral-50 border-neutral-300 hover:border-blue-400' }}"
-                            label=""
-                            placeholder="Latitude"
-                            :show-icon="false"
-                        />
-                        <x-forms.input id="longitude" name="longitude"
-                            class="border {{ $errors->has('longitude') ? 'bg-red-50 border-red-500' : 'bg-neutral-50 border-neutral-300 hover:border-blue-400' }}"
-                            label=""
-                            placeholder="Longitude"
-                            :show-icon="false"
-                        />
-                    </span>
-                </div>
-                <div class="flex items-center w-full">
-                    <div class="bg-white p-2 rounded-xl w-full">
-                        <div id="map" class="w-full aspect-[5/3] max-md:aspect-[3/5] rounded-lg relative z-10"></div>
-                    </div>
-                </div>
                 <x-forms.radio-group title="Kategori" >
                     <x-forms.radio-select
                         class="flex"
@@ -105,6 +81,30 @@
                         id="category_sejarah"
                     />
                 </x-forms.radio-group>
+            </div>
+            <div class="flex flex-col gap-4 text-sm lg:w-2xl">
+                <div class="flex flex-col gap-2">
+                    <label for="latitude">Koordinat</label>
+                    <span class="grid grid-cols-2 max-md:grid-cols-1 items-center gap-2">
+                        <x-forms.input id="latitude" name="latitude"
+                            class="border {{ $errors->has('latitude') ? 'bg-red-50 border-red-500' : 'bg-neutral-50 border-neutral-300 hover:border-blue-400' }}"
+                            label=""
+                            placeholder="Latitude"
+                            :show-icon="false"
+                        />
+                        <x-forms.input id="longitude" name="longitude"
+                            class="border {{ $errors->has('longitude') ? 'bg-red-50 border-red-500' : 'bg-neutral-50 border-neutral-300 hover:border-blue-400' }}"
+                            label=""
+                            placeholder="Longitude"
+                            :show-icon="false"
+                        />
+                    </span>
+                </div>
+                <div class="flex items-center w-full">
+                    <div class="bg-white p-2 rounded-xl w-full">
+                        <div id="map" class="w-full aspect-[5/3] max-md:aspect-[3/5] rounded-lg relative z-10"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="flex items-center gap-3 text-sm border-t border-t-slate-300 py-6">
