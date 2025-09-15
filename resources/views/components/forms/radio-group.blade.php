@@ -1,17 +1,6 @@
-<div class="modal hidden" id="{{$id}}">
-    <div class="modal-overlay fixed w-full bg-black/80 top-0 left-0 bottom-0 flex py-24 justify-center">
-        <div class="modal-card absolute flex flex-col gap-6 bg-white w-[60%] max-md:w-[90%] rounded-2xl p-4">
-            <div class="modal-head flex items-center justify-between">
-                <h2 class="font-semibold">{{$title}}</h2>
-                <div class="opacity-30 hover:opacity-100 cursor-pointer" onclick="closeModal('{{$id}}')">
-                    <x-icons type="close" width="16" height="16" color="slate-400" />
-                </div>
-            </div>
-            <div class="modal-body">
-                <ul class="flex flex-col">
-                    {{$slot}}
-                </ul>
-            </div>
-        </div>
+<div class="{{$direction == 'row' ? 'md:grid md:grid-cols-[1fr_2fr] md:gap-4 md:items-center flex flex-col gap-2' : 'flex flex-col gap-2'}}">
+    <label for="category">Kategori</label>
+    <div class="flex flex-wrap gap-2 items-center {{$direction == 'row' ? 'md:justify-end' : 'md:justify-start'}}">
+        {{$slot}}
     </div>
 </div>

@@ -29,14 +29,6 @@
         @csrf @method('POST')
         <div class="flex max-md:flex-col gap-6">
             <div class="lg:w-lg flex flex-col gap-4 text-sm">
-                <x-forms.select name="category" id="category" label="Kategori" class="border py-1 rounded-xl {{ $errors->has('category') ? 'bg-red-50 border-red-500' : 'bg-neutral-50 border-neutral-300 hover:border-blue-400' }}" direction="row" >
-                    <option disabled selected value="">Pilih Kategori</option>
-                    <option value="Pantai" >Pantai</option>
-                    <option value="Alam" >Alam</option>
-                    <option value="Pulau" >Pulau</option>
-                    <option value="Sejarah" >Sejarah</option>
-                </x-forms.select>
-
                 <x-forms.input id="name" name="name"
                     class="border {{ $errors->has('name') ? 'bg-red-50 border-red-500' : 'bg-neutral-50 border-neutral-300 hover:border-blue-400' }}"
                     label="Nama Tempat Wisata"
@@ -83,25 +75,36 @@
                         <div id="map" class="w-full aspect-[5/3] max-md:aspect-[3/5] rounded-lg relative z-10"></div>
                     </div>
                 </div>
-                <div class="md:grid md:grid-cols-[1fr_2fr] md:gap-4 md:items-center flex flex-col gap-2">
-                    <label for="category">Kategori</label>
-                    <div class="flex gap-2 items-center md:justify-end">
-                        <div>
-                            <input type="checkbox" name="is_housing_improvement" value="1" id="housing_improvement" class="peer hidden" />
-                            <label for="housing_improvement" class="cursor-pointer flex items-center gap-2 peer-checked:bg-emerald-100 bg-neutral-100 px-4 py-2.5 rounded-xl border peer-checked:border-emerald-500 border-slate-300 peer-checked:text-emerald-500 text-slate-400 peer-checked:[&_path]:stroke-emerald-500">
-                                <p>RTLH</p>
-                                <x-icons type="double-check" width="16" height="16" color="slate-400" />
-                            </label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="is_healthy_kitchen" value="1" id="healthy_kitchen" class="peer hidden" />
-                            <label for="healthy_kitchen" class="cursor-pointer flex items-center gap-2 peer-checked:bg-yellow-100 bg-neutral-100 px-4 py-2.5 rounded-xl border peer-checked:border-yellow-500 border-slate-300 peer-checked:text-yellow-500 text-slate-400 peer-checked:[&_path]:stroke-yellow-500">
-                                <p>Dapur Sehat</p>
-                                <x-icons type="double-check" width="16" height="16" color="slate-400" />
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                <x-forms.radio-group title="Kategori" >
+                    <x-forms.radio-select
+                        class="flex"
+                        name="category"
+                        label="Pantai"
+                        value="Pantai"
+                        id="category_pantai"
+                    />
+                    <x-forms.radio-select
+                        class="flex"
+                        name="category"
+                        label="Alam"
+                        value="Alam"
+                        id="category_alam"
+                    />
+                    <x-forms.radio-select
+                        class="flex"
+                        name="category"
+                        label="Pulau"
+                        value="Pulau"
+                        id="category_pulau"
+                    />
+                    <x-forms.radio-select
+                        class="flex"
+                        name="category"
+                        label="Sejarah"
+                        value="Sejarah"
+                        id="category_sejarah"
+                    />
+                </x-forms.radio-group>
             </div>
         </div>
         <div class="flex items-center gap-3 text-sm border-t border-t-slate-300 py-6">
