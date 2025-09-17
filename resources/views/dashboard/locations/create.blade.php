@@ -36,7 +36,7 @@
                     direction="row"
                     :show-icon="false"
                 />
-                <x-forms.input id="description" name="description"
+                <x-forms.textarea id="description" name="description"
                     class="border {{ $errors->has('description') ? 'bg-red-50 border-red-500' : 'bg-neutral-50 border-neutral-300 hover:border-blue-400' }}"
                     label="Deskripsi Tempat"
                     placeholder="Masukkan Deskripsi"
