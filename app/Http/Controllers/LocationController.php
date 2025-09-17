@@ -14,6 +14,15 @@ class LocationController extends Controller
         return view('dashboard.locations.index', compact('locations'));
     }
 
+    public function show(Location $location)
+    {
+        $stats = $location->socialPosts()
+            ->stats()
+            ->first();
+
+        return view('dashboard.locations.detail', compact(['location', 'stats']));
+    }
+
     public function create()
     {
         return view('dashboard.locations.create');
